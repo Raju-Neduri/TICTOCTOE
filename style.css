@@ -90,57 +90,44 @@ nav {
     margin: 1rem 0;
 }
 
+/* Turn Info Styling: realistic increase in font size on change */
 .controls .info {
     margin-bottom: 1rem;
     font-size: 28px;
-    /* Proper font size for turn info */
     background: linear-gradient(45deg, #ff4081, #f50057);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    /* Cool glowing animation effect */
-    text-shadow: 0 0 8px rgba(255, 64, 129, 0.8), 0 0 16px rgba(245, 0, 87, 0.8);
-    animation: turnGlow 2s ease-in-out infinite;
+    transition: transform 0.3s ease, font-size 0.3s ease;
 }
 
-@keyframes turnGlow {
-
-    0%,
-    100% {
-        text-shadow: 0 0 8px rgba(255, 64, 129, 0.8), 0 0 16px rgba(245, 0, 87, 0.8);
-    }
-
-    50% {
-        text-shadow: 0 0 16px rgba(255, 64, 129, 1), 0 0 32px rgba(245, 0, 87, 1);
-    }
+/* Applied temporarily on turn change */
+.turn-animate {
+    transform: scale(1.1);
+    font-size: 32px;
 }
 
-/* Winner Style (applied after winning) */
+/* Winner Style (unchanged) */
 .winner {
     font-size: 40px;
-    /* Increased font size for winner highlight */
     font-weight: bold;
     background: linear-gradient(45deg, #43e97b, #38f9d7);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 20px rgba(67, 233, 123, 0.8), 0 0 40px rgba(56, 249, 215, 0.8);
-    animation: winnerPulse 1s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: pop 0.5s ease-out;
 }
 
-@keyframes winnerPulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-        text-shadow: 0 0 20px rgba(67, 233, 123, 0.8), 0 0 40px rgba(56, 249, 215, 0.8);
+@keyframes pop {
+    from {
+        transform: scale(0.9);
     }
 
-    50% {
+    to {
         transform: scale(1.1);
-        text-shadow: 0 0 30px rgba(67, 233, 123, 1), 0 0 60px rgba(56, 249, 215, 1);
     }
 }
 
@@ -192,6 +179,5 @@ nav {
 
     .controls .info {
         font-size: 24px;
-        /* Adjust font size on smaller screens */
     }
 }

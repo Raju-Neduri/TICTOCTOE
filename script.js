@@ -33,28 +33,42 @@ function changeTurn() {
 
 /**
  * Draws a line between the center of two boxes (startBox, endBox)
+ * with an extension added to both ends.
  */
 function drawWinLine(startBox, endBox) {
     const containerRect = container.getBoundingClientRect();
     const rectStart = boxes[startBox].getBoundingClientRect();
     const rectEnd = boxes[endBox].getBoundingClientRect();
 
+    // Calculate centers of the starting and ending boxes
     const startX = rectStart.left + rectStart.width / 2 - containerRect.left;
     const startY = rectStart.top + rectStart.height / 2 - containerRect.top;
     const endX = rectEnd.left + rectEnd.width / 2 - containerRect.left;
     const endY = rectEnd.top + rectEnd.height / 2 - containerRect.top;
 
+    // Calculate the difference and distance between the centers
     const diffX = endX - startX;
     const diffY = endY - startY;
     const distance = Math.sqrt(diffX * diffX + diffY * diffY);
     const angle = Math.atan2(diffY, diffX) * (180 / Math.PI);
 
-    line.style.width = distance + "px";
-    line.style.transform = `translate(${startX}px, ${startY}px) rotate(${angle}deg)`;
+    // Add an extension (in pixels) to both ends of the line
+    const extension = 20; // Adjust this value as needed
+
+    // Update the line width by adding twice the extension (for both ends)
+    line.style.width = (distance + extension * 2) + "px";
+
+    // Adjust the starting point by subtracting the extension along the direction of the line
+    const rad = Math.atan2(diffY, diffX);
+    const newStartX = startX - extension * Math.cos(rad);
+    const newStartY = startY - extension * Math.sin(rad);
+
+    // Apply the new transformation for the line
+    line.style.transform = `translate(${newStartX}px, ${newStartY}px) rotate(${angle}deg)`;
 }
 
 /**
- * Checks if there's a winner and updates info text styling accordingly
+ * Checks if there's a winner and updates info text styling accordingly.
  */
 function checkWin() {
     for (let combo of winCombos) {
@@ -78,7 +92,7 @@ function checkWin() {
 }
 
 /**
- * Checks if all boxes are filled
+ * Checks if all boxes are filled (for tie condition).
  */
 function isBoardFull() {
     for (let boxText of boxtexts) {
@@ -98,7 +112,7 @@ Array.from(boxes).forEach((box, index) => {
 
             checkWin();
 
-            // If no win, check for tie
+            // Check for tie if no win is detected
             if (!isGameOver) {
                 if (isBoardFull()) {
                     info.innerText = "It's a Tie!";

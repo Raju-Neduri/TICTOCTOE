@@ -90,10 +90,10 @@ nav {
     margin: 1rem 0;
 }
 
-/* Turn Info Styling: realistic increase in font size on change */
 .controls .info {
     margin-bottom: 1rem;
     font-size: 28px;
+    /* Proper font size for turn info */
     background: linear-gradient(45deg, #ff4081, #f50057);
     background-clip: text;
     -webkit-background-clip: text;
@@ -108,7 +108,7 @@ nav {
     font-size: 32px;
 }
 
-/* Winner Style (unchanged) */
+/* Winner Style (applied after winning) */
 .winner {
     font-size: 40px;
     font-weight: bold;
@@ -149,7 +149,14 @@ nav {
     background: linear-gradient(135deg, #ff4081, #f50057);
 }
 
-/* Celebration GIF */
+/* Celebration GIF Container - Centered */
+.imgbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .imgbox img {
     width: 0;
     transition: width 1s ease-in-out;

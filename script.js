@@ -23,7 +23,7 @@ const winCombos = [
     [1, 4, 7], // Col 2
     [2, 5, 8], // Col 3
     [0, 4, 8], // Diagonal 1
-    [2, 4, 6], // Diagonal 2
+    [2, 4, 6]  // Diagonal 2
 ];
 
 // Switch turn between X and O
@@ -77,6 +77,18 @@ function checkWin() {
     }
 }
 
+/**
+ * Checks if all boxes are filled
+ */
+function isBoardFull() {
+    for (let boxText of boxtexts) {
+        if (boxText.innerText === "") {
+            return false;
+        }
+    }
+    return true;
+}
+
 // Handle clicks on each box
 Array.from(boxes).forEach((box, index) => {
     box.addEventListener("click", () => {
@@ -85,10 +97,17 @@ Array.from(boxes).forEach((box, index) => {
             audioTurn.play().catch(err => console.log("Turn sound error:", err));
 
             checkWin();
+
+            // If no win, check for tie
             if (!isGameOver) {
-                turn = changeTurn();
-                info.innerText = "Turn for " + turn;
-                info.classList.remove("winner");
+                if (isBoardFull()) {
+                    info.innerText = "It's a Tie!";
+                    isGameOver = true;
+                } else {
+                    turn = changeTurn();
+                    info.innerText = "Turn for " + turn;
+                    info.classList.remove("winner");
+                }
             }
         }
     });

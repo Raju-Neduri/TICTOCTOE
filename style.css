@@ -81,32 +81,31 @@ nav {
     margin-top: 1rem;
 }
 
-/* Turn Info (attractive styling) */
-.info {
-    font-size: 24px;
+/* Controls (Turn Info + Reset Button) */
+.controls {
+    display: flex;
+    flex-direction: column;
+    /* reset button below turn info */
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.controls .info {
+    margin-bottom: 1rem;
+    font-size: 28px;
+    /* proper font size for turn info */
     background: linear-gradient(45deg, #ff4081, #f50057);
-    /* Fallback for browsers that don't support -webkit-background-clip */
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    animation: glow 1.5s infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px rgba(255, 64, 129, 0.7), 0 0 20px rgba(245, 0, 87, 0.7);
-    }
-
-    to {
-        text-shadow: 0 0 20px rgba(255, 64, 129, 1), 0 0 30px rgba(245, 0, 87, 1);
-    }
 }
 
 /* Winner Style (applied after winning) */
 .winner {
-    font-size: 28px;
+    font-size: 36px;
+    /* increased font size for winner highlight */
     font-weight: bold;
     background: linear-gradient(45deg, #43e97b, #38f9d7);
     background-clip: text;
@@ -119,24 +118,12 @@ nav {
 
 @keyframes pop {
     from {
-        transform: scale(0.8);
+        transform: scale(0.9);
     }
 
     to {
-        transform: scale(1);
+        transform: scale(1.1);
     }
-}
-
-/* Controls (Turn Info + Reset Button) */
-/* Instead of using gap, we add margin-right to .info */
-.controls {
-    display: flex;
-    align-items: center;
-    margin: 1rem 0;
-}
-
-.controls .info {
-    margin-right: 1rem;
 }
 
 /* Unique Reset Button */
@@ -183,5 +170,10 @@ nav {
 
     .gameInfo h1 {
         font-size: 1.5rem;
+    }
+
+    .controls .info {
+        font-size: 24px;
+        /* adjust font size on smaller screens */
     }
 }

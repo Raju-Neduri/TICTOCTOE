@@ -1,31 +1,23 @@
-#Tic-Tac-Toe
+# Tic-Tac-Toe
 
 A simple Tic-Tac-Toe game built using web technologies.
 
-Features
+## Features
 
-Two-player mode
+- Two-player mode  
+- Simple and interactive UI  
+- Responsive design  
+- Keeps track of wins and draws  
 
-Simple and interactive UI
+## Technologies Used
 
-Responsive design
+- HTML  
+- CSS  
+- JavaScript  
 
-Keeps track of wins and draws
+## How to Play
 
-Technologies Used
-
-HTML
-
-CSS
-
-JavaScript
-
-How to Play
-
-Open the game in a browser.
-
-Player X and Player O take turns clicking on the grid.
-
-The first player to get three in a row (horizontally, vertically, or diagonally) wins.
-
-If all boxes are filled without a winner, it's a draw.
+1. Open the game in a browser.  
+2. Player X and Player O take turns clicking on the grid.  
+3. The first player to get three in a row (horizontally, vertically, or diagonally) wins.  
+4. If all boxes are filled without a winner, it's a draw.  
